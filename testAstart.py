@@ -40,7 +40,7 @@ while cur_node != start:
     cur_node = visited[cur_node]
 
 path.append(start)
-print(pa)
+# print(path)
 # Print the reversed path
 print(f'Path from {start} to {goal}:')
 print(' ---> '.join(reversed(path)))

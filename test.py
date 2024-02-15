@@ -34,9 +34,12 @@ def draw(arrVarMap):
                 pg.draw.rect(sc, pg.Color('gray'), get_rect(j, i), border_radius=TILE // 5)
                 rect1 = pg.Rect(get_rect(j,i))
                 # pg.draw.circle(sc, pg.Color('blue'), (j * TILE + 1, i * TILE + 1), 2)
-                pg.draw.circle(sc, pg.Color('blue'),rect1.center, 2)
+                # pg.draw.circle(sc, pg.Color('blue'),rect1.center, 2)
             if arrVarMap[i][j] == 1:
                 pg.draw.rect(sc, pg.Color('red'), get_rect(j, i), border_radius=TILE // 5)
+                rect2 = pg.Rect(get_rect(j,i))
+
+
             if arrVarMap[i][j] == 2:
                 pg.draw.rect(sc, pg.Color('yellow'), get_rect(j, i), border_radius=TILE // 5)
             if arrVarMap[i][j] == 3:
@@ -56,7 +59,7 @@ clock = pg.time.Clock()
 # grid = [[1 if random() < 0.2 else 0 for col in range(cols)] for row in range(rows)]
 # print(grid)
 
-grid = read_csv("map.csv")
+grid = read_csv("map2_unmark.csv")
 print(grid)
 # dict of adjacency lists
 graph = {}
