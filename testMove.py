@@ -6,7 +6,7 @@ class Agent:
         self.paths = paths
         self.color = color
         self.path_index = 0
-        self.speed = 0.5
+        self.speed = 2
         self.x, self.y = self.grid_to_pixel(*start_cell)
 
     def grid_to_pixel(self, x, y):
@@ -39,7 +39,7 @@ class Agent:
 pygame.init()
 
 # Các thông số của grid và đối tượng
-grid_size = 15
+grid_size = 5
 tile_size = 50
 object_radius = 20
 
@@ -57,7 +57,7 @@ paths = [
 # Tạo danh sách các agent
 agents = [
     Agent((0, 0), paths, (255, 0, 0)),
-    Agent((7, 1), paths, (0, 255, 0)),
+    Agent((1, 1), paths, (0, 255, 0)),
     # Thêm các Agent khác tại đây...
 ]
 
