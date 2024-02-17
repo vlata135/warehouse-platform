@@ -1,0 +1,11 @@
+"d,r","d,r,l","d,r,l","d,r,l","d,l"
+"u,d,r","u,r,l","u,r,l","u,r,l","u,l"
+"u,d",1,"u,d,r","u,d,l",1
+"r,u,d","d,r,l","u,d,r,l","u,d,r,l","d,l"
+"r,u,d","u,r,l","u,d,r,l","u,d,r,l","u,l"
+"u,d",1,"u,d,r","u,d,l",1
+"r,u,d","d,r,l","u,d,r,l","u,d,r,l","d,l"
+"r,u,d","u,r,l","u,d,r,l","u,d,r,l","u,l"
+"u,d",1,"u,d,r","u,d,l",1
+"r,u,d","d,r,l","u,d,r,l","u,d,r,l","d,l"
+"r,u,d","u,r,l","u,d,r,l","u,d,r,l","u,l"

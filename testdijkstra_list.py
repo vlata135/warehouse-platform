@@ -4,12 +4,13 @@ import time
 csv_file_path = 'map_test.csv'
 
 from heapq import *
-def read_csv(filename):
+def read_csv_algo(filename):
     map_data = []
     with open(csv_file_path, "r") as data:
         data = csv.reader(data, delimiter=",")
         for row in data:
-            map_data.append(list(row))
+            result_list = [item for item in row if item != '']
+            map_data.append(list(result_list))
     return map_data
 
 def matrix_to_adjacency(matrix):
@@ -35,6 +36,18 @@ def matrix_to_adjacency(matrix):
                
             if 'r' in directions and col < cols - 1:
                 adjacency_matrix[current_index][index(row, col + 1)] = 1
+
+            # if 'u' in directions :
+            #     adjacency_matrix[current_index][index(row - 1, col)] = 1
+                
+            # if 'd' in directions :
+            #     adjacency_matrix[current_index][index(row + 1, col)] = 1
+                
+            # if 'l' in directions :
+            #     adjacency_matrix[current_index][index(row, col - 1)] = 1
+               
+            # if 'r' in directions :
+            #     adjacency_matrix[current_index][index(row, col + 1)] = 1
             
     return adjacency_matrix
 
@@ -87,12 +100,13 @@ def dijkstra(adjacency_list, start, end):
 
 # Ví dụ sử dụng
 #đọc map dưới dạng movement move ( u,d,r,l)
-map = read_csv(csv_file_path)
+map = read_csv_algo(csv_file_path)
 #chuyển map về dạng ma trận kề
 adj_matrix = matrix_to_adjacency(map)
 adj_list = matrix_to_adjacency_list(adj_matrix)
+print(adj_list[20])
 start_node = 0
-end_node = 125
+end_node = 300
 t1 = time.time()
 shortest_path = dijkstra(adj_list, start_node, end_node)
 t2 = time.time()

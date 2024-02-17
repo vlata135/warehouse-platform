@@ -9,8 +9,8 @@ import time
 
 SCREEN_WIDTH = 1000 #1000
 SCREEN_HEIGHT = 780  #900
+TILE = 23
 
-# TILE = 40
 def read_csv_algo(filename):
     map_data = []
     with open(filename, "r") as data:
@@ -63,7 +63,7 @@ def getCoordinate(matrix, index):
     row = index // cols
     col = index % cols
     return row, col
-def heuristic_manhattan(node, end_node):
+def heuristic_manhattan(map,node, end_node):
     # Hàm heuristic Mahattan cho A*
     x1, y1 = getCoordinate(map,node)
     x2, y2 = getCoordinate(map,end_node)
@@ -124,7 +124,7 @@ def get_next_nodes(x, y):
     ways = [-1, 0], [0, -1], [1, 0], [0, 1]
     return [(x + dx, y + dy) for dx, dy in ways if check_next_node(x + dx, y + dy)]
 
-def draw(arrVarMap):
+def draw(sc,arrVarMap):
     center = []
     for i in range(len(arrVarMap)):
         for j in range(len(arrVarMap[0])):
@@ -166,49 +166,6 @@ def getPosition(arrVarMap):
     # print(center[1])
     return center
 
-def drawMove(path,centers):
+def drawMove(sc,path,centers):
     for point in path:
         pg.draw.circle(sc, pg.Color('blue'), centers[point], 4)
-
-    
-
-cols, rows = 28, 28
-TILE = 23
-
-pg.init()
-sc = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pg.display.set_caption("demo")
-clock = pg.time.Clock()
-# grid
-# grid = [[1 if random() < 0.2 else 0 for col in range(cols)] for row in range(rows)]
-# print(grid)
-
-grid = read_csv("map2_unmark.csv")
-map = read_csv_algo('map_test.csv')
-map2 = read_csv("mapCheck.csv")
-# print(map)
-centers = getPosition(map2)
-#chuyển map về dạng ma trận kề
-adj_matrix = matrix_to_adjacency(map)
-adj_list = matrix_to_adjacency_list(adj_matrix)
-start_node = 62
-end_node = 75
-t1 = time.time()
-shortest_path = dijkstra(adj_list, start_node, end_node)
-print("Đường đi ngắn nhất:", shortest_path)
-t2 = time.time()
-print("Thoi gian thuc hien")
-print(t2 - t1)
-
-while True:
-    # fill screen
-    sc.fill(pg.Color("black"))
-    # draw grid
-    # [[pg.draw.rect(sc, pg.Color('darkorange'), get_rect(x, y), border_radius=TILE // 5)
-    #   for x, col in enumerate(row) if col] for y, row in enumerate(grid)]
-    draw(grid)
-    drawMove(shortest_path,centers)
-    # pygame necessary lines
-    [exit() for event in pg.event.get() if event.type == pg.QUIT]
-    pg.display.flip()
-    clock.tick(7)
